@@ -14,7 +14,7 @@ int main(void)
 
 	while (sh < 10)
 	{
-		printf("%i", sh);
+		putchar(sh);
 		sh++;
 	}
 	putchar('\n');
