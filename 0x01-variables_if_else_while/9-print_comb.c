@@ -18,8 +18,8 @@ int main(void)
 		if (sh < 9)
 		{
 		putchar(',');
-		}
 		putchar(' ');
+		}
 		sh++;
 	}
 	putchar('\n');
