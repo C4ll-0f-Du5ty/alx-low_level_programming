@@ -10,7 +10,7 @@
  */
 int main(void)
 {
-	char sh = 'a'
+	char sh = 'a';
 
 	while (sh <= 'z')
 	{
