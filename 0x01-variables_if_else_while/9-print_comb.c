@@ -15,7 +15,10 @@ int main(void)
 	while (sh < 10)
 	{
 		putchar(sh + '0');
+		if (sh < 9)
+		{
 		putchar(',');
+		}
 		putchar(' ');
 		sh++;
 	}
