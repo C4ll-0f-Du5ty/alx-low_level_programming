@@ -11,7 +11,7 @@
 int main(void)
 {
 	int sh = 0;
-	char ch = 'a'
+	char ch = 'a';
 
 	while (sh < 10)
 	{
