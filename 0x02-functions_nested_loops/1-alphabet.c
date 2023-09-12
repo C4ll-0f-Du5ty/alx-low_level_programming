@@ -3,11 +3,10 @@
 #include <stdio.h>
 #include "main.h"
 /**
- * main - Entry point
- *
- * print_alphabet - utilizes on the _[utchar function
- *
+ * print_alphabet - utilizes on the _putchar function to
+ * the alphabet a - z
  */
+
 void print_alphabet(void)
 {
 	char sh = 'a';
