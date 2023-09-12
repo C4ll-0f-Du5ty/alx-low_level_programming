@@ -2,14 +2,14 @@
 #include "main.h"
 
 /**
- * times_table - prints time table of n
+ * print_times_table - prints time table of n
  *
  * Description: nice one
  *
  * @n: takes number input
 */
 
-void times_table(int n)
+void print_times_table(int n)
 {
 	int i, j, k;
 
