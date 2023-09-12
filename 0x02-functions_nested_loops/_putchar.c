@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
-#include <"main.h">
+#include "main.h"
 /**
  * _putchar - writes te character c to stdout
  * @c: the character to print
