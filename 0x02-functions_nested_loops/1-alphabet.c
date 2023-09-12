@@ -5,6 +5,8 @@
 /**
  * main - Entry point
  *
+ * print_alphabet - utilizes on the _[utchar function
+ *
  * Discription: A C program (Positive - negative) function
  *
  * Return: always 0 (Success)
