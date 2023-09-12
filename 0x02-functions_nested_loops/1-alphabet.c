@@ -19,6 +19,4 @@ void print_alphabet(void)
 		sh++;
 	}
 	_putchar('\n');
-
-	return (0);
 }
