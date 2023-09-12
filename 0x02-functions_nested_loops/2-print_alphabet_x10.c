@@ -12,6 +12,7 @@ void print_alphabet_x10(void)
 
 	for (s = 0; s < 10; s++)
 	{
+		sh = 'a'
 	while (sh <= 'z')
 	{
 		_putchar(sh);
