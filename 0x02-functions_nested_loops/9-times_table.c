@@ -27,7 +27,7 @@ void times_table(void)
 			k = i * j;
 
 			if (k < 10)
-				_putchar(" ");
+				_putchar(' ');
 			else
 				_putchar((k / 10) + 48);
 
