@@ -17,12 +17,12 @@ int main(void)
 	for (i = 0; i < 101; i++)
 	{
 		if (i % 3 == 0)
-			return ("Fizz");
+			puts("Fizz");
 		else if (i % 5 == 0)
-			return ("Buzz");
+			puts("Buzz");
 		else if (i % 3 == 0 && i % 5 == 0)
-			return ("FizzBuzz");
+			puts("FizzBuzz")
 		else
-			return (i);
+			puts(i);
 	}
 }
