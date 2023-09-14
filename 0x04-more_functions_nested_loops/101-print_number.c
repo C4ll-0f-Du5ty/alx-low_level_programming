@@ -9,19 +9,17 @@
 
 void print_number(int n)
 {
-	unsigned int s = n;
+	unsigned int s;
 
-	/*first check if its negative*/
 	if (n < 0)
 	{
 		_putchar('-');
-		s = -s;
+		s = -n;
 	}
-
-	/*print the first few digits*/
-	if ((s / 10) > 0)
+	else
+		s = n;
+	if (s / 10)
 		print_number(s / 10);
 
-	/*print the last digit*/
-	_putchar((s % 10) + 48);
+	_putchar((s % 10) + '0');
 }
