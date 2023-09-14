@@ -12,14 +12,14 @@
 
 long int L_P_N(long int n)
 {
-	int i = 3, L_P;
+	long int i = 2, L_P;
 
-	for (; i < n / 3;)
+	for (; n > 1;)
 	{
 		if (n % i == 0)
 		{
 			n /= i;
-		L_P = i;
+			L_P = i;
 
 		}
 		else
@@ -40,9 +40,9 @@ long int L_P_N(long int n)
 int main(void)
 {
 	long int n = 612852475143;
-	int R = L_P_N(n);
+	long int R = L_P_N(n);
 
-	printf("%i\n", R);
+	printf("%li\n", R);
 
 	return (0);
 }
