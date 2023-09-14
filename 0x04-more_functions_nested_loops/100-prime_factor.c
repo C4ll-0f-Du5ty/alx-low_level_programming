@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <math.h>
 #include "main.h"
 
 /**
@@ -15,7 +14,7 @@ long int L_P_N(long int n)
 {
 	int i = 3, L_P;
 
-	for (; i < sqrt(n);)
+	for (; i < n / 3;)
 	{
 		if (n % i == 0)
 		{
