@@ -9,7 +9,7 @@
 
 void print_number(int n)
 {
-unsigned int s = n;
+	unsigned int s = n;
 
 	/*first check if its negative*/
 	if (n < 0)
