@@ -10,7 +10,7 @@
  *
 */
 
-long int L_P_N(long long n)
+long int L_P_N(long int n)
 {
 	int i = 3, L_P;
 
@@ -39,8 +39,10 @@ long int L_P_N(long long n)
 
 int main(void)
 {
-	long long n = 612852475143;
+	long int n = 612852475143;
 	int R = L_P_N(n);
 
-	printf("%i", R);
+	printf("%i\n", R);
+
+	return (0);
 }
