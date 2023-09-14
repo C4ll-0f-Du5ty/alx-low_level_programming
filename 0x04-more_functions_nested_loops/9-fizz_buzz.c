@@ -17,12 +17,13 @@ int main(void)
 	for (i = 0; i < 101; i++)
 	{
 		if (i % 3 == 0)
-			puts("Fizz");
+			printf("Fizz ");
 		else if (i % 5 == 0)
-			puts("Buzz");
+			printf("Buzz ");
 		else if (i % 3 == 0 && i % 5 == 0)
-			puts("FizzBuzz")
+			printf("FizzBuzz ")
 		else
-			puts(i);
+			printf("%i ", i);
 	}
+	printf("\n");
 }
