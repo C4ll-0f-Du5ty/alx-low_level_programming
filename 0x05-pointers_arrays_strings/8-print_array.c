@@ -13,9 +13,9 @@
 
 void print_array(int *a, int n)
 {
-	n -= 1;
+	int i;
 
-	while (n--)
-		_putchar(a[n]);
+	for (i = 0; i < n; i++)
+		_putchar(a[i]);
 	_putchar('\n');
 }
