@@ -8,20 +8,20 @@
  * Return: the encoded ptr
  */
 
-char *rot13(char *ptr)
-{
+char *rot13(char *ptr) {
 	int i;
 
-	for (i = 0; ptr[i] != '\0'; i++)
-	{
-		if ((ptr[i] >= 'a' && ptr[i] <= 'm') || (ptr[i] >= 'A' && ptr[i] <= 'M'))
-		{
-			ptr[i] += 13;
+	char rot13[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char ROT13[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
+
+	while (*ptr) {
+		for (i = 0; i <= 52; i++) {
+			if (*ptr == rot13[i]) {
+				*ptr = ROT13[i];
+				break;
+			}
 		}
-		else if ((ptr[i] >= 'n' && ptr[i] <= 'z') || (ptr[i] >= 'N' && ptr[i] <= 'Z'))
-		{
-			ptr[i] -= 13;
-		}
+		ptr++;
 	}
-	return (ptr);
+	return ptr;
 }
