@@ -4,29 +4,29 @@
 
 /**
  * *rot13 - encodes the string
- * @ptr: the string to be encoded
+ * @c: the string to be encoded
  * Return: the encoded ptr
  */
 
-char *rot13(char *s)
+char *rot13(char *c)
 {
 	int i;
 
 	char rot13[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char ROT13[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
-	char *ptr = s;
+	char *ptr = c;
 
-	while (*s)
+	while (*c)
 	{
 		for (i = 0; i <= 52; i++)
 		{
-			if (*s == rot13[i])
+			if (*c == rot13[i])
 			{
-				*s = ROT13[i];
+				*c = ROT13[i];
 				break;
 			}
 		}
-		s++;
+		c++;
 	}
 	return (ptr);
 }
