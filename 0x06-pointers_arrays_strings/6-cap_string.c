@@ -29,7 +29,7 @@ char *cap_string(char *str)
 	{
 	for (i = 0; i < 12; i++)
 	{
-		if (str[i] == delimiter[i])
+		if (str[j] == delimiter[i])
 		{
 		flag = 1;
 		break;
