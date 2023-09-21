@@ -21,7 +21,7 @@ int isLower(char c)
 
 char *cap_string(char *str)
 {
-	int j = 0;
+	int i, j = 0;
 	char delimiter[] = " \t\n,.!?\"(){}";
 	int flag = 1;
 
@@ -34,7 +34,7 @@ char *cap_string(char *str)
 	}
 	for (i = 0; i < 12; i++)
 	{
-		if (c == delimiter[i])
+		if (str[i] == delimiter[i])
 		{
 			flag = 1;
 			break;
