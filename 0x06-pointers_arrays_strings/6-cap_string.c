@@ -10,9 +10,9 @@
 
 char *cap_string(char *s)
 {
-	int capitalize = 1;
+	int capitalize = 1, i;
 
-	for (int i = 0; s[i] != '\0'; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
 	if (isspace(s[i]) || s[i] == ',' || s[i] == ';' || s[i] == '.' ||
 	s[i] == '!' || s[i] == '?' || s[i] == '"' || s[i] == '(' ||
