@@ -3,6 +3,24 @@
 #include <string.h>
 
 /**
+ * isDelimiter - determines whether ascii is a delimiter
+ * @c: character
+ * @flag: indicator
+ * Return: 1 if true, 0 if false
+*/
+
+int isDelimiter(char c, int flag)
+{
+	int i;
+	char delimiter[] = " \t\n,.!?\"(){}";
+
+	for (i = 0; i < 12; i++)
+		if (c == delimiter[i])
+			flag = 1;
+	return (flag);
+}
+
+/**
  * isLower - finds the lower characters in ascii forms
  * @c: the character
  * Return: the answer
@@ -21,26 +39,19 @@ int isLower(char c)
 
 char *cap_string(char *str)
 {
-	int i, j = 0;
-	char delimiter[] = " \t\n,.!?\"(){}";
-	int delimiter_count = sizeof(delimiter) - 1;
-	int flag = 1;
+	int j = 0;
+	int flag;
 
 	while (str[j] != '\0')
 	{
-	for (i = 0; i < delimiter_count; i++)
-	{
-		if (str[j] == delimiter[i])
-		{
-		flag = 1;
-		break;
-	}
-	}
-	if (isLower(str[j]) && flag)
+
+	if (isLower(str[j]) && isDelimiter(str[j], flag))
 	{
 		str[j] = str[j] - 32;
 		flag = 0;
 	}
+	else
+		flag = 0;
 	j++;
 	}
 	return (str);
