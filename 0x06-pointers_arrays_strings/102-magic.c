@@ -18,4 +18,3 @@ int main(void)
 	printf("g[2] = %d\n", g[2]);
 	return (0);
 }
-
