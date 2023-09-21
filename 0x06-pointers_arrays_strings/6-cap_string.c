@@ -23,11 +23,12 @@ char *cap_string(char *str)
 {
 	int i, j = 0;
 	char delimiter[] = " \t\n,.!?\"(){}";
+	int delimiter_count = sizeof(delimiter) - 1;
 	int flag = 1;
 
 	while (str[j] != '\0')
 	{
-	for (i = 0; i < 12; i++)
+	for (i = 0; i < delimiter_count; i++)
 	{
 		if (str[j] == delimiter[i])
 		{
