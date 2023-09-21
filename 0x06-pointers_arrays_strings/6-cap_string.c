@@ -35,7 +35,7 @@ char *cap_string(char *str)
 		break;
 	}
 	}
-	if (isLower(str[j] && flag))
+	if (isLower(str[j]) && flag)
 	{
 		str[j] = str[j] - 32;
 		flag = 0;
