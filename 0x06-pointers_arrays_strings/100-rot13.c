@@ -10,17 +10,17 @@
 
 char *rot13(char *ptr)
 {
-	int i, j;
-	int length = strlen(ptr);
+	int i;
 
 	for (i = 0; ptr[i] != '\0'; i++)
 	{
-		for (j = 0; ((ptr[i] >= 'a' && ptr[i] <= 'z') || (ptr[i] >= 'A' && ptr[i] <= 'Z')) && j < length; j++)
+		if ((ptr[i] >= 'a' && ptr[i] <= 'm') || (ptr[i] >= 'A' && ptr[i] <= 'M'))
 		{
-			if ((ptr[i] >= 'a' && ptr[i] <= 'z'))
-				ptr[i] = ((ptr[i] - 'a' + 13) % 26) + 'a';
-			else
-				ptr[i] = ((ptr[i] - 'A' + 13) % 26) + 'A';
+			ptr[i] += 13;
+		}
+		else if ((ptr[i] >= 'n' && ptr[i] <= 'z') || (ptr[i] >= 'N' && ptr[i] <= 'Z'))
+		{
+			ptr[i] -= 13;
 		}
 	}
 	return (ptr);
