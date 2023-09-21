@@ -8,24 +8,25 @@
  * Return: the encoded ptr
  */
 
-char *rot13(char *ptr)
+char *rot13(char *s)
 {
 	int i;
 
 	char rot13[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char ROT13[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
+	char *ptr = s;
 
-	while (*ptr)
+	while (*s)
 	{
 		for (i = 0; i <= 52; i++)
 		{
-			if (*ptr == rot13[i])
+			if (*s == rot13[i])
 			{
-				*ptr = ROT13[i];
+				*s = ROT13[i];
 				break;
 			}
 		}
-		ptr++;
+		s++;
 	}
 	return (ptr);
 }
