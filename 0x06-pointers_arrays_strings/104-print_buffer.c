@@ -49,6 +49,7 @@ void print_buffer(char *b, int size)
 		for (j = 0; j < 10 && i + j < size; j++)
 		{
 			int ch = b[i + j];
+
 			printf("%c", isPrintableASCII(ch) ? ch : '.');
 		}
 		printf("\n");
