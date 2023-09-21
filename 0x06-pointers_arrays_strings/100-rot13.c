@@ -14,7 +14,10 @@ char *rot13(char *ptr)
 
 	for (i = 0; ptr[i] != '\0'; i++)
 	{
-		ptr[i] = (ptr[i] + 13) % 26
+			if ((ptr[i] >= 'a' && ptr[i] <= 'z'))
+				ptr[i] = ((ptr[i] - 'a' + 13) % 26) + 'a';
+			else if (ptr[i] >= 'A' && ptr[i] <= 'Z')
+				ptr[i] = ((ptr[i] - 'A' + 13) % 26) + 'A';
 	}
 	return (ptr);
 }
