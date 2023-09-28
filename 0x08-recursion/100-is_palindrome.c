@@ -5,11 +5,11 @@
 /**
  * p - check if a string is a palindrome
  * @s: string to check
- * @i: counter
+ * @n: the size of the string
+ * @i: a counter
  * Return: 0 or 1
  */
 
-int is_palindrome(char *s);
 int p(char *s, int i, int n)
 {
 	if (i < n / 2 && s[i] == s[n - 1 - i])
