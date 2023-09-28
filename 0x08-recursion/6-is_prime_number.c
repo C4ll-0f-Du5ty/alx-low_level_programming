@@ -18,7 +18,7 @@ int primes(int n, int i)
 	}
 	else
 	{
-	if (i != n / 2 && n % i != 0)
+	if (i <= n / 2 && n % i != 0)
 	{
 		return (primes(n, i + 2));
 	}
