@@ -13,6 +13,7 @@ int power(int n, int i)
 {
 	if (i * i < n)
 	return (power(n, i + 1));
+	return (0);
 }
 
 /**
