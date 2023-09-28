@@ -9,14 +9,16 @@
  * Return: 0 or 1
  */
 
+int is_palindrome(char *s);
 int p(char *s, int i, int n)
 {
 	if (i < n / 2 && s[i] == s[n - 1 - i])
-		return (p(s, i + 1));
+		return (p(s, i + 1, n));
 	else if (i >= n / 2 && s[i] == s[n - 1 - i])
 		return (1);
 	else
 		return (0);
+	return (0);
 }
 
 /**
