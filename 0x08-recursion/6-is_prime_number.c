@@ -12,6 +12,12 @@
 int primes(int n, int i)
 {
 
+	if (i % 2 == 0 || i % 3 == 0)
+	{
+		return (primes(n, i + 2));
+	}
+	else
+	{
 	if (i != n / 2 && n % i != 0)
 	{
 		return (primes(n, i + 2));
@@ -22,6 +28,7 @@ int primes(int n, int i)
 	}
 	else
 		return (0);
+	}
 }
 
 /**
