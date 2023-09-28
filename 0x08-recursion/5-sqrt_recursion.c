@@ -28,6 +28,8 @@ int _sqrt_recursion(int n)
 		return (1);
 	else if (n % 2 == 0 || n % 5 == 0)
 		return (power(n, 1));
+	else if (n < 0)
+		return (-1);
 	else
 		return (-1);
 }
