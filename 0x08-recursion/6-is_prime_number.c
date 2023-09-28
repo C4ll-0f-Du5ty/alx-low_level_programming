@@ -14,7 +14,7 @@ int primes(int n, int i)
 
 	if (i != n / 2 && n % i != 0)
 	{
-		return primes(n, i + 2);
+		return (primes(n, i + 2));
 	}
 	else if (n % i != 0)
 	{
@@ -26,7 +26,6 @@ int primes(int n, int i)
 
 /**
  * is_prime_number - check if n is a prime number
- * @othrn:int
  * @n: int
  * Return: 0 or 1
  */
@@ -39,7 +38,7 @@ int is_prime_number(int n)
 		return (1);
 	else if (n % 2 == 0)
 		return (0);
-	else 
+	else
 		return (primes(n, 3));
 }
 
