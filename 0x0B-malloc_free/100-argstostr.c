@@ -20,21 +20,17 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 	}
 
-	int total_length = 0;
-
 	for (int i = 0; i < ac; i++)
 	{
 		total_length += strlen(av[i]) + 1;
 	}
 
-	char *result = (char *)malloc(total_length * sizeof(char));
+	result = (char *)malloc(total_length * sizeof(char));
 
 	if (result == NULL)
 	{
 		return (NULL);
 	}
-
-	int current_position = 0;
 
 	for (int i = 0; i < ac; i++)
 	{
