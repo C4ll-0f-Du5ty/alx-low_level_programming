@@ -15,6 +15,10 @@ char *str_concat(char *s1, char *s2)
 	char *ptr = malloc(strlen(s1) + strlen(s2));
 	long unsigned int i;
 
+	if (s1 == NULL)
+		s1 = "\0";
+	if (s2 == NULL)
+		s2 = "\0";
 	if (ptr == 0)
 		return (0);
 	for (i = 0; i <= strlen(s1) + strlen(s2); i++)
