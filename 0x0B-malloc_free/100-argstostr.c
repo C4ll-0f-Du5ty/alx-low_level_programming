@@ -11,6 +11,10 @@
 
 char *argstostr(int ac, char **av)
 {
+	char *result;
+	int total_length = 0;
+	int current_position = 0;
+
 	if (ac == 0 || av == NULL)
 	{
 		return (NULL);
