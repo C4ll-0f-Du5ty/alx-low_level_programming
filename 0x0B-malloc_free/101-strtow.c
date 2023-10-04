@@ -13,11 +13,11 @@ int wrdcnt(char *m)
 {
 	int i, j = 0;
 
-	for (i = 0; s[i]; i++)
+	for (i = 0; m[i]; i++)
 	{
-		if (s[i] == ' ')
+		if (m[i] == ' ')
 		{
-			if (s[i + 1] != ' ' && s[i + 1] != '\0')
+			if (m[i + 1] != ' ' && m[i + 1] != '\0')
 				j++;
 		}
 		else if (i == 0)
