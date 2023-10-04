@@ -12,7 +12,7 @@
 char *argstostr(int ac, char **av)
 {
 	char *result;
-	int total_length = 0;
+	int i, total_length = 0;
 	int current_position = 0;
 
 	if (ac == 0 || av == NULL)
@@ -20,7 +20,7 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 	}
 
-	for (int i = 0; i < ac; i++)
+	for (i = 0; i < ac; i++)
 	{
 		total_length += strlen(av[i]) + 1;
 	}
@@ -32,7 +32,7 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 	}
 
-	for (int i = 0; i < ac; i++)
+	for (i = 0; i < ac; i++)
 	{
 		strcpy(result + current_position, av[i]);
 		current_position += strlen(av[i]);
