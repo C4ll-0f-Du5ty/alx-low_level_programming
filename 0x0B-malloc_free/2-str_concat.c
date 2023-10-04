@@ -13,17 +13,17 @@
 char *str_concat(char *s1, char *s2)
 {
 	char *ptr = malloc(strlen(s1) + strlen(s2));
-	int i;
+	long unsigned int i;
 
 	if (ptr == 0)
 		return (0);
 	for (i = 0; i <= strlen(s1) + strlen(s2); i++)
 	{
 		if (i < strlen(s1))
-			m[i] = s1[i];
+			ptr[i] = s1[i];
 		else
-			m[i] = s2[i - strlen(s1)];
+			ptr[i] = s2[i - strlen(s1)];
 	}
 
-	return (m);
+	return (ptr);
 }
