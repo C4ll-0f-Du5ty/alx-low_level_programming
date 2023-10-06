@@ -13,16 +13,18 @@
 int main(int argc, char **argv)
 {
 	int i, j = 0;
+	char *c;
 
 	if (argc <= 2)
 	{
 	printf("0\n");
-	return (1);
+	return (0);
 	}
 
 	for (i = 1; i < argc; i++)
 	{
-		if (*argv[i] < '0' || *argv[i] > '9')
+		c = argv[i];
+		if (*c < '0' || *c > '9')
 		{
 			printf("Error\n");
 			return (1);
