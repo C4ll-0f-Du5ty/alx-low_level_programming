@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 	return (1);
 	}
 
-	for (i = 0; argv[i] != '\0'; i++)
+	for (i = 1; i < argc; i++)
 	{
 		if (isdigit(argv[i]))
 		{
