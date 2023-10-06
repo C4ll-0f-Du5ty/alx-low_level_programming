@@ -13,12 +13,15 @@ int main(int argc, char **argv)
 {
 	int i, j;
 
-	i = atoi(argv[1]);
-	j = atoi(rgv[2]);
+	if (argc == 1)
+	{
+	printf("Error\n");
+	return (1);
+	}
 
-	if (i == NULL || j == NULL)
-		printf("Error\n");
-	else
+	i = atoi(argv[1]);
+	j = atoi(argv[2]);
+
 	printf("%i\n", i * j);
 	return (0);
 }
