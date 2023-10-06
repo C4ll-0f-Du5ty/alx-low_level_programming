@@ -13,7 +13,7 @@
 
 int main(int argc, char **argv)
 {
-	int i, c, int change[] = {25, 10, 5, 2, 1};
+	int i, c, change[] = {25, 10, 5, 2, 1};
 	int counter = 0;
 
 	if (argc - 1 != 1)
