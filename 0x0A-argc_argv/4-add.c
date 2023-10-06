@@ -10,27 +10,21 @@
  * Return: 0
  */
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	int i, j = 0;
+	int s = 0;
 	char *c;
 
-	if (argc <= 2)
+	while (--argc)
 	{
-	printf("0\n");
-	return (0);
+		for (c = argv[argc]; *c; c++)
+			if (*c < '0' || *c > '9')
+			{
+				printf("Error\n");
+				return (1);
+			}
+		s += atoi(argv[argc]);
 	}
-
-	for (i = 1; i < argc; i++)
-	{
-		c = argv[i];
-		if (*c < '0' || *c > '9')
-		{
-			printf("Error\n");
-			return (1);
-		}
-		j += atoi(argv[i]);
-	}
-	printf("%d\n", j);
+	printf("%d\n", s);
 	return (0);
 }
