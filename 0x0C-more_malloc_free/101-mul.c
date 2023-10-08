@@ -17,8 +17,8 @@ char *multiply(char *s1, char *s2)
 	char *r;
 	int l1, l2, a, b, c, x;
 
-	l1 = _strlen(s1);
-	l2 = _strlen(s2);
+	l1 = strlen(s1);
+	l2 = strlen(s2);
 	r = malloc(a = x = l1 + l2);
 	if (!r)
 		printf("Error\n"), exit(98);
@@ -27,7 +27,7 @@ char *multiply(char *s1, char *s2)
 
 	for (l1--; l1 >= 0; l1--)
 	{
-		if (!_isdigit(s1[l1]))
+		if (!isdigit(s1[l1]))
 		{
 			free(r);
 			printf("Error\n"), exit(98);
@@ -35,9 +35,9 @@ char *multiply(char *s1, char *s2)
 		a = s1[l1] - '0';
 		c = 0;
 
-		for (l2 = _strlen(s2) - 1; l2 >= 0; l2--)
+		for (l2 = strlen(s2) - 1; l2 >= 0; l2--)
 		{
-			if (!_isdigit(s2[l2]))
+			if (!isdigit(s2[l2]))
 			{
 				free(r);
 				printf("Error\n"), exit(98);
