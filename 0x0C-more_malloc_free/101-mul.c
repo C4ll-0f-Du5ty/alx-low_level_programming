@@ -14,38 +14,45 @@
 
 char *multiply(char *s1, char *s2)
 {
-	char *result;
-	int len1, len2, len_result, carry, i, j, k;
+	char *r;
+	int l1, l2, a, b, c, x;
 
-	len1 = strlen(s1);
-	len2 = strlen(s2);
-	len_result = len1 + len2;
-	result = malloc(len_result + 1);
-	if (!result)
-		exit(98);
+	l1 = _strlen(s1);
+	l2 = _strlen(s2);
+	r = malloc(a = x = l1 + l2);
+	if (!r)
+		printf("Error\n"), exit(98);
+	while (a--)
+		r[a] = 0;
 
-	for (i = 0; i < len_result; i++)
-		result[i] = '0';
-	result[len_result] = '\0';
-
-	for (i = len1 - 1; i >= 0; i--)
+	for (l1--; l1 >= 0; l1--)
 	{
-		carry = 0;
-		for (j = len2 - 1, k = i + len2 + 1; j >= 0; j--, k--)
+		if (!_isdigit(s1[l1]))
 		{
-			int num1 = s1[i] - '0';
-			int num2 = s2[j] - '0';
-			int product = (result[k] - '0') + (num1 * num2) + carry;
-
-			carry = product / 10;
-			result[k] = (product % 10) + '0';
+			free(r);
+			printf("Error\n"), exit(98);
 		}
+		a = s1[l1] - '0';
+		c = 0;
 
-		if (carry > 0)
-			result[i + 1] = (result[i + 1] - '0') + carry + '0';
+		for (l2 = _strlen(s2) - 1; l2 >= 0; l2--)
+		{
+			if (!_isdigit(s2[l2]))
+			{
+				free(r);
+				printf("Error\n"), exit(98);
+			}
+			b = s2[l2] - '0';
+
+			c += r[l1 + l2 + 1] + (a * b);
+			r[l1 + l2 + 1] = c % 10;
+
+			c /= 10;
+		}
+		if (c)
+			r[l1 + l2 + 1] += c;
 	}
-
-	return (result);
+	return (r);
 }
 
 /**
