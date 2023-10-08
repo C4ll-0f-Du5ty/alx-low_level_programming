@@ -5,84 +5,109 @@
 #include <ctype.h>
 
 /**
- * multiply - multiply two big number strings
- * @s1: the first big number string
- * @s2: the second big number string
- *
- * Return: the product big number string
+ * _strlen - Returns the length of a string.
+ * @s: The input string.
+ * Return: The length of the string.
  */
-
-char *multiply(char *s1, char *s2)
+int _strlen(char *s)
 {
-	char *r;
-	int l1, l2, a, b, c, x;
-
-	l1 = strlen(s1);
-	l2 = strlen(s2);
-	r = malloc(a = x = l1 + l2);
-	if (!r)
-		printf("Error\n"), exit(98);
-	while (a--)
-		r[a] = 0;
-
-	for (l1--; l1 >= 0; l1--)
-	{
-		if (!isdigit(s1[l1]))
-		{
-			free(r);
-			printf("Error\n"), exit(98);
-		}
-		a = s1[l1] - '0';
-		c = 0;
-
-		for (l2 = strlen(s2) - 1; l2 >= 0; l2--)
-		{
-			if (!isdigit(s2[l2]))
-			{
-				free(r);
-				printf("Error\n"), exit(98);
-			}
-			b = s2[l2] - '0';
-
-			c += r[l1 + l2 + 1] + (a * b);
-			r[l1 + l2 + 1] = c % 10;
-
-			c /= 10;
-		}
-		if (c)
-			r[l1 + l2 + 1] += c;
-	}
-	return (r);
+	int len = 0;
+	while (s[len])
+		len++;
+	return (len);
 }
 
 /**
- * main - multiply two big number strings
- * @argc: the number of arguments
- * @argv: the argument vector
- *
- * Return: Always 0 on success.
+ * _isdigit - Checks if a character is a digit.
+ * @c: The input character.
+ * Return: 1 if it's a digit, 0 otherwise.
  */
+int _isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
 
-int main(int argc, char **argv)
+/**
+ * multiply - Multiplies two big numbers represented as strings.
+ * @num1: The first number.
+ * @num2: The second number.
+ * Return: The result of the multiplication as a string.
+ */
+char *multiply(char *num1, char *num2)
+{
+	int len1 = _strlen(num1);
+	int len2 = _strlen(num2);
+	int len = len1 + len2;
+	int *result = calloc(len, sizeof(int));
+	int i, j;
+	char *res = malloc(len + 1);
+
+	if (!result)
+		return (NULL);
+
+	for (i = len1 - 1; i >= 0; i--)
+	{
+		for (j = len2 - 1; j >= 0; j--)
+		{
+			int n1 = num1[i] - '0';
+			int n2 = num2[j] - '0';
+			int sum = n1 * n2 + result[i + j + 1];
+			result[i + j + 1] = sum % 10;
+			result[i + j] += sum / 10;
+		}
+	}
+
+	while (len > 0 && result[len - 1] == 0)
+		len--;
+
+	if (len == 0)
+	{
+		char *res = malloc(2);
+		if (!res)
+			return (NULL);
+		res[0] = '0';
+		res[1] = '\0';
+		free(result);
+		return (res);
+	}
+
+	if (!res)
+	{
+		free(result);
+		return (NULL);
+	}
+
+	for (i = 0; i < len; i++)
+		res[i] = result[i] + '0';
+
+	res[len] = '\0';
+	free(result);
+	return (res);
+}
+
+/**
+ * main - Entry point.
+ * @argc: The number of command-line arguments.
+ * @argv: The array of command-line arguments.
+ * Return: 0 if successful, 98 if an error occurs.
+ */
+int main(int argc, char *argv[])
 {
 	char *result = multiply(argv[1], argv[2]);
 
-	if (argc != 3)
+	if (argc != 3 || !argv[1] || !argv[2])
 	{
-		fprintf(stderr, "Usage: %s num1 num2\n", argv[0]);
-		return (1);
+		printf("Error\n");
+		return (98);
 	}
 
-	if (result != NULL)
+	if (!result)
 	{
-		printf("%s\n", result);
-		free(result);
-	}
-	else
-	{
-		fprintf(stderr, "Error: Unable to multiply\n");
-		return (1);
+		printf("Error\n");
+		return (98);
 	}
 
+	printf("%s\n", result);
+	free(result);
 	return (0);
 }
