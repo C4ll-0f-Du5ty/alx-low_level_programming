@@ -64,7 +64,9 @@ int main(int argc, char **argv)
 		return (1);
 	}
 
-	char *result = multiply(argv[1], argv[2]);
+	char *result;
+
+	result = multiply(argv[1], argv[2]);
 
 	if (result != NULL)
 	{
