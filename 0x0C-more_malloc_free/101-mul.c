@@ -5,109 +5,86 @@
 #include <ctype.h>
 
 /**
- * _strlen - Returns the length of a string.
- * @s: The input string.
- * Return: The length of the string.
+ * big_multiply - multiply two big number strings
+ * @f1: the first big number string
+ * @f2: the second big number string
+ *
+ * Return: the product big number string
  */
-int _strlen(char *s)
+char *big_multiply(char *f1, char *f2)
 {
-	int len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}
+	char *r;
+	int l1, l2, a, b, c, x;
 
-/**
- * _isdigit - Checks if a character is a digit.
- * @c: The input character.
- * Return: 1 if it's a digit, 0 otherwise.
- */
-int _isdigit(int c)
-{
-	return (c >= '0' && c <= '9');
-}
+	l1 = strlen(f1);
+	l2 = strlen(f2);
+	r = malloc(a = x = l1 + l2);
+	if (!r)
+		printf("Error\n"), exit(98);
+	while (a--)
+		r[a] = 0;
 
-/**
- * multiply - Multiplies two big numbers represented as strings.
- * @num1: The first number.
- * @num2: The second number.
- * Return: The result of the multiplication as a string.
- */
-char *multiply(char *num1, char *num2)
-{
-	int len1 = _strlen(num1);
-	int len2 = _strlen(num2);
-	int len = len1 + len2;
-	int *result = calloc(len, sizeof(int));
-	int i, j;
-	char *res = malloc(len + 1);
-
-	if (!result)
-		return (NULL);
-
-	for (i = len1 - 1; i >= 0; i--)
+	for (l1--; l1 >= 0; l1--)
 	{
-		for (j = len2 - 1; j >= 0; j--)
+		if (!isdigit(f1[l1]))
 		{
-			int n1 = num1[i] - '0';
-			int n2 = num2[j] - '0';
-			int sum = n1 * n2 + result[i + j + 1];
-			result[i + j + 1] = sum % 10;
-			result[i + j] += sum / 10;
+			free(r);
+			printf("Error\n"), exit(98);
 		}
+		a = f1[l1] - '0';
+		c = 0;
+
+		for (l2 = strlen(f2) - 1; l2 >= 0; l2--)
+		{
+			if (!isdigit(f2[l2]))
+			{
+				free(r);
+				printf("Error\n"), exit(98);
+			}
+			b = f2[l2] - '0';
+
+			c += r[l1 + l2 + 1] + (a * b);
+			r[l1 + l2 + 1] = c % 10;
+
+			c /= 10;
+		}
+		if (c)
+			r[l1 + l2 + 1] += c;
 	}
-
-	while (len > 0 && result[len - 1] == 0)
-		len--;
-
-	if (len == 0)
-	{
-		char *res = malloc(2);
-		if (!res)
-			return (NULL);
-		res[0] = '0';
-		res[1] = '\0';
-		free(result);
-		return (res);
-	}
-
-	if (!res)
-	{
-		free(result);
-		return (NULL);
-	}
-
-	for (i = 0; i < len; i++)
-		res[i] = result[i] + '0';
-
-	res[len] = '\0';
-	free(result);
-	return (res);
+	return (r);
 }
 
+
 /**
- * main - Entry point.
- * @argc: The number of command-line arguments.
- * @argv: The array of command-line arguments.
- * Return: 0 if successful, 98 if an error occurs.
+ * main - multiply two big number strings
+ * @argc: the number of arguments
+ * @argv: the argument vector
+ *
+ * Return: Always 0 on success.
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	char *result = multiply(argv[1], argv[2]);
+	char *r;
+	int a, c, x;
 
-	if (argc != 3 || !argv[1] || !argv[2])
+	if (argc != 3)
+		printf("Error\n"), exit(98);
+
+	x = strlen(argv[1]) + strlen(argv[2]);
+	r = big_multiply(argv[1], argv[2]);
+	c = 0;
+	a = 0;
+	while (c < x)
 	{
-		printf("Error\n");
-		return (98);
+		if (r[c])
+			a = 1;
+		if (a)
+			_putchar(r[c] + '0');
+		c++;
 	}
-
-	if (!result)
-	{
-		printf("Error\n");
-		return (98);
-	}
-
-	printf("%s\n", result);
-	free(result);
+	if (!a)
+		_putchar('0');
+	_putchar('\n');
+	free(r);
 	return (0);
 }
