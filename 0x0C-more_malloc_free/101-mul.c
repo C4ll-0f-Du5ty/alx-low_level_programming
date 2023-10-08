@@ -5,36 +5,47 @@
 #include <ctype.h>
 
 /**
- * multiply - multiplys
- * @num1: the first
- * @num2: the second
+ * multiply - multiply two big number strings
+ * @s1: the first big number string
+ * @s2: the second big number string
  *
- * Return: the long values
+ * Return: the product big number string
  */
 
-long multiply(int num1, int num2)
+char *multiply(char *s1, char *s2)
 {
-	return ((long)(num1 * num2));
-}
+	char *result;
+	int len1, len2, len_result, carry, i, j, k;
 
-/**
- * isNumeric - checks if its a digit
- * @str: the pointer
- *
- * Return: Always 1 on success.
- */
+	len1 = strlen(s1);
+	len2 = strlen(s2);
+	len_result = len1 + len2;
+	result = malloc(len_result + 1);
+	if (!result)
+		exit(98);
 
-int isNumeric(const char *str)
-{
-	while (*str)
+	for (i = 0; i < len_result; i++)
+		result[i] = '0';
+	result[len_result] = '\0';
+
+	for (i = len1 - 1; i >= 0; i--)
 	{
-		if (!isdigit(*str))
+		carry = 0;
+		for (j = len2 - 1, k = i + len2 + 1; j >= 0; j--, k--)
 		{
-			return (0);
+			int num1 = s1[i] - '0';
+			int num2 = s2[j] - '0';
+			int product = (result[k] - '0') + (num1 * num2) + carry;
+
+			carry = product / 10;
+			result[k] = (product % 10) + '0';
 		}
-		str++;
+
+		if (carry > 0)
+			result[i + 1] = (result[i + 1] - '0') + carry + '0';
 	}
-	return (1);
+
+	return (result);
 }
 
 /**
@@ -45,34 +56,26 @@ int isNumeric(const char *str)
  * Return: Always 0 on success.
  */
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	int num1, num2;
-	long result;
-
 	if (argc != 3)
 	{
-		printf("Error\n");
-		exit(98);
+		fprintf(stderr, "Usage: %s num1 num2\n", argv[0]);
+		return (1);
 	}
 
-	if (!isNumeric(argv[1]) || !isNumeric(argv[2]))
+	char *result = multiply(argv[1], argv[2]);
+
+	if (result != NULL)
 	{
-		printf("Error\n");
-		exit(98);
+		printf("%s\n", result);
+		free(result);
 	}
-
-	num1 = atoi(argv[1]);
-	num2 = atoi(argv[2]);
-
-	if (num1 < 0 || num2 < 0)
+	else
 	{
-		printf("Error\n");
-		exit(98);
+		fprintf(stderr, "Error: Unable to multiply\n");
+		return (1);
 	}
 
-	result = multiply(num1, num2);
-
-	printf("%ld\n", result);
 	return (0);
 }
