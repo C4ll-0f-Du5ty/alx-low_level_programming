@@ -4,9 +4,13 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-long long multiply(int num1, int num2)
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+long multiply(int num1, int num2)
 {
-	return (long long)(num1 * num2);
+	return (long)(num1 * num2);
 }
 
 int isNumeric(const char *str)
@@ -24,17 +28,19 @@ int isNumeric(const char *str)
 
 int main(int argc, char *argv[])
 {
+	int num1, num2;
+	long result;
+
 	if (argc != 3)
 	{
 		printf("Error\n");
 		return (98);
 	}
 
-	int num1, num2;
 	if (!isNumeric(argv[1]) || !isNumeric(argv[2]))
 	{
 		printf("Error\n");
-		exit(98);
+		return (98);
 	}
 
 	num1 = atoi(argv[1]);
@@ -43,12 +49,11 @@ int main(int argc, char *argv[])
 	if (num1 < 0 || num2 < 0)
 	{
 		printf("Error\n");
-		exit(98);
+		return (98);
 	}
 
-	long long result = multiply(num1, num2);
+	result = multiply(num1, num2);
 
-	printf("%lld\n", result);
+	printf("%ld\n", result);
 	return (0);
 }
-
