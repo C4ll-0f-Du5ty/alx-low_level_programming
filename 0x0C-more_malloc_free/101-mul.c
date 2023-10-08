@@ -58,15 +58,13 @@ char *multiply(char *s1, char *s2)
 
 int main(int argc, char **argv)
 {
+	char *result = multiply(argv[1], argv[2]);
+
 	if (argc != 3)
 	{
 		fprintf(stderr, "Usage: %s num1 num2\n", argv[0]);
 		return (1);
 	}
-
-	char *result;
-
-	result = multiply(argv[1], argv[2]);
 
 	if (result != NULL)
 	{
