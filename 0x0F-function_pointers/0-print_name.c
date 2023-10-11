@@ -11,6 +11,6 @@
 
 void print_name(char *name, void (*f)(char *))
 {
-	while (name && f)
+	if (!!name && !!f)
 		f(name);
 }
