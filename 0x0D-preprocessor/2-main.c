@@ -5,6 +5,6 @@
 
 int main()
 {
-	printf("%ld", __FILE__);
+	printf("%s", __FILE__);
 	return (0);
 }
