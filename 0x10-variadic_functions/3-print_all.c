@@ -2,6 +2,11 @@
 #include <stdarg.h>
 #include "variadic_functions.h"
 
+/**
+ * print_all - prints anything
+ * @format: the format string
+ */
+
 void print_all(const char * const format, ...)
 {
 	va_list args;
