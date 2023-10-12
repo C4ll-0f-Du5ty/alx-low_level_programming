@@ -16,27 +16,19 @@ void print_all(const char * const format, ...)
 		switch (format[i])
 		{
 			case 'c':
-				printf("%c", va_arg(args, int));
-				if (separator != NULL)
-                                        printf("%s", separator);
+				printf("%s%c", separator, va_arg(args, int));
 				break;
 			case 'i':
-				printf("%d", va_arg(args, int));
-				if (separator != NULL)
-                                        printf("%s", separator);
+				printf("%s%d", separator, va_arg(args, int));
 				break;
 			case 'f':
-				printf("%f", va_arg(args, double));
-				if (separator != NULL)
-                                        printf("%s", separator);
+				printf("%s%f", separator, va_arg(args, double));
 				break;
 			case 's':
 				str = va_arg(args, char *);
 				if (str == NULL)
 					str = "(nil)";
-				printf("%s", str);
-				if (separator != NULL)
-					printf("%s", separator);
+				printf("%s%s", separator, str);
 				break;
 			default:
 				i++;
