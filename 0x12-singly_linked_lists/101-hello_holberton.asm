@@ -6,6 +6,8 @@ section .text
     extern printf
 
 main:
-	mov		edi, msg
-	mov		eax, 0
-	call	printf
+	push rdi                ; Preserve registers
+	mov rdi, format         ; Load the address of the format string
+	call printf            ; Call the printf function
+	pop rdi                 ; Restore registers
+	ret
