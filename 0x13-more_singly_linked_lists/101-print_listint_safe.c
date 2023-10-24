@@ -9,6 +9,7 @@
  *
  * Return: the number of nodes in the list
  */
+
 size_t print_listint_safe(const listint_t *head)
 {
 	size_t count = 0;
@@ -20,7 +21,7 @@ size_t print_listint_safe(const listint_t *head)
 
 		count++;
 
-		if (current <= current->next)
+		if (current >= current->next)
 		{
 			printf("-> [%p] %d\n", (void *)current->next, current->next->n);
 			break;
