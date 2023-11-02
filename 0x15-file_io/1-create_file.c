@@ -9,17 +9,21 @@
  */
 int create_file(const char *filename, char *text_content)
 {
+	struct stat st;
+	size_t text_length;
+	FILE *file;
+
 	if (filename == NULL)
 		return (-1); /* Return -1 if filename is NULL */
 
-	FILE *file = fopen(filename, "w");
+	file = fopen(filename, "w");
 
 	if (file == NULL)
 		return (-1); /* Return -1 if the file cannot be created */
 
 	if (text_content != NULL)
 	{
-		size_t text_length = strlen(text_content);
+		text_length = strlen(text_content);
 
 		if (fwrite(text_content, 1, text_length, file) != text_length)
 		{
@@ -31,7 +35,6 @@ int create_file(const char *filename, char *text_content)
 	fclose(file);
 
 	/* Set file permissions to rw------- if the file is newly created */
-	struct stat st;
 
 	if (stat(filename, &st) == 0)
 		return (1); /* File already exists */
