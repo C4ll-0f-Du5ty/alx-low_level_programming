@@ -8,6 +8,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <sys/stat.h>
+#include <stdarg.h>
 
 #define READ_BUF_SIZE 1024
 
