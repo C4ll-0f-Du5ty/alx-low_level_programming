@@ -9,13 +9,15 @@
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
+	FILE *file;
+
 	if (filename == NULL)
 		return (-1); /* Return -1 if filename is NULL */
 
 	if (text_content == NULL)
 		return (1); /* Return 1 if text_content is NULL */
 
-	FILE *file = fopen(filename, "a"); /* Open the file in append mode */
+	file = fopen(filename, "a"); /* Open the file in append mode */
 
 	if (file == NULL)
 		return (-1); /* Return -1 if the file cannot be opened for appending */
