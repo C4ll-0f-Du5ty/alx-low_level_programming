@@ -9,6 +9,7 @@
 #include <ctype.h>
 #include <sys/stat.h>
 #include <stdarg.h>
+#include <elf.h>
 
 #define READ_BUF_SIZE 1024
 
