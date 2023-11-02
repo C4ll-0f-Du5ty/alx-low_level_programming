@@ -31,16 +31,18 @@ int create_file(const char *filename, char *text_content)
 			return (-1); /* Return -1 if the write operation fails */
 		}
 	}
-
 	fclose(file);
-
 	/* Set file permissions to rw------- if the file is newly created */
-
 	if (stat(filename, &st) == 0)
-		return (1); /* File already exists */
+	{
+		file = fopen(filename, "w");
+		if (file == NULL)
+			return (-1); /* Return -1 if the file */
 
+		fclose(file);
+		return (1); /* File already exists and has been truncated */
+	}
 	if (chmod(filename, S_IRUSR | S_IWUSR) != 0)
 		return (-1); /* Return -1 if changing permissions fails */
-
 	return (1); /* Return 1 on success */
 }
