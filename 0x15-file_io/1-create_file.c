@@ -1,33 +1,40 @@
 #include "main.h"
 
 /**
- * create_file - creates a file
- * @filename: name of file to create
- * @text_content: text to write
+ * create_file - Creates or truncates a file with specified content and permissions.
+ * @filename: The name of the file to create.
+ * @text_content: A NULL-terminated string to write to the file (can be NULL).
  *
- * Return: 1 on success 0 on failure
+ * Return: 1 on success, -1 on failure (file cannot be created, write fails, etc...).
  */
 int create_file(const char *filename, char *text_content)
 {
-	int i;
-	ssize_t bytes, len;
+	if (filename == NULL)
+		return (-1); /* Return -1 if filename is NULL */
 
-	len = strlen(text_content);
+	FILE *file = fopen(filename, "w");
+	if (file == NULL)
+		return (-1); /* Return -1 if the file cannot be created or opened for writing */
 
-	if (!filename)
-		return (-1);
-	i = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
-	if (i == -1)
-		return (-1);
-	if (chmod(filename, S_IRUSR | S_IWUSR) != 0)
+	if (text_content != NULL)
 	{
-	return (-1);
+		size_t text_length = strlen(text_content);
+		if (fwrite(text_content, 1, text_length, file) != text_length)
+		{
+			fclose(file);
+			return (-1); /* Return -1 if the write operation fails */
+		}
 	}
-	if (len)
-		bytes = write(i, text_content, len);
-	close(i);
-	if (bytes == len)
-		return (1);
-	else
-		return (-1);
+
+	fclose(file);
+
+	/* Set file permissions to rw------- if the file is newly created */
+	struct stat st;
+	if (stat(filename, &st) == 0)
+		return (1); /* File already exists, no need to change permissions */
+
+	if (chmod(filename, S_IRUSR | S_IWUSR) != 0)
+		return (-1); /* Return -1 if changing permissions fails */
+
+	return (1); /* Return 1 on success */
 }
