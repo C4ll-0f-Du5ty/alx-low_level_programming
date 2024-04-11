@@ -24,46 +24,34 @@ int min(int a, int b)
  */
 int jump_search(int *array, size_t size, int value)
 {
-	int jump;
-	size_t prev = 0;
-	int g;
+	size_t i, saut, step;
 
-	if (array == NULL)
+	if (array == NULL || size == 0)
 		return (-1);
 
-	jump = sqrt(size);
+	step = sqrt(size);
+	saut = 0;
 
-	while (array[min(jump, size) - 1] < value)
+	/* Jump phase */
+	while (saut < size && array[saut] < value)
 	{
-		/* Print the value checked during the jump phase */
-		printf("Value checked array[%u] = [%d]\n", min(jump, size) - 1,
-			   array[min(jump, size) - 1]);
-		prev = jump;
-		jump += sqrt(size);
-		if (prev >= size)
-			return (-1);
+		printf("Value checked array[%ld] = [%d]\n", saut, array[saut]);
+		i = saut;
+		saut += step;
 	}
 
-	while (array[prev] < value)
+	printf("Value found between indexes [%ld] and [%ld]\n", i, saut);
+
+	/* Adjust saut to ensure it's within the array bounds */
+	saut = saut < size - 1 ? saut : size - 1;
+
+	/* Linear search phase */
+	while (i < saut && array[i] < value)
 	{
-		printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
-		prev++;
-
-		g = prev;
-
-		if (g == min(jump, size))
-			return (-1);
+		printf("Value checked array[%ld] = [%d]\n", i, array[i]);
+		i++;
 	}
+	printf("Value checked array[%ld] = [%d]\n", i, array[i]);
 
-	/* Print the value checked during the linear search phase */
-	printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
-
-	if (array[prev] == value)
-	{
-		printf("Value found between indexes [%lu] and [%d]\n",
-			   prev, min(jump, size));
-		return (prev);
-	}
-
-	return (-1);
+	return (array[i] == value ? (int)i : -1);
 }
