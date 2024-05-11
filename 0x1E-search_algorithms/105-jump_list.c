@@ -38,7 +38,8 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 		/* Print the value checked at the current index */
 		printf("Value checked at index [%lu] = [%d]\n", current->index, current->n);
 
-		/* Break out of the loop if the current node's value is greater than or equal to the target value */
+		/* Break out of the loop if the current node's
+		value is greater than or equal to the target value */
 		if (current->n >= value || current->next == NULL)
 			break;
 	}
